@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier Noir | 日常を特別なカフェに変える</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1e3f20', // 深みのあるダークグリーン
+                            light: '#f5f0e6', // 温かみのあるベージュ
+                            accent: '#b08d57', // 上質なゴールド/ブラウン
+                            text: '#333333',
+                            gray: '#8c8c8c'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333333;
+            background-color: #f5f0e6;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 画像のズームエフェクト */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.7s ease;
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- ナビゲーション -->
+    <header class="fixed w-full z-50 transition-all duration-300" id="header">
+        <div class="absolute inset-0 bg-brand-light/90 backdrop-blur-md border-b border-brand-accent/20" id="header-bg"></div>
+        <div class="relative max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-serif text-2xl font-bold text-brand-dark tracking-widest">
+                Atelier Noir
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="#products" class="hidden md:block text-sm hover:text-brand-accent transition-colors">Lineup</a>
+                <a href="#about" class="hidden md:block text-sm hover:text-brand-accent transition-colors">About</a>
+                <button class="hover:text-brand-accent transition-colors">
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                </button>
+                <button class="md:hidden hover:text-brand-accent transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ① ファーストビュー -->
+        <section class="relative h-screen flex items-center justify-center pt-20">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=2000" alt="Coffee pouring" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-brand-dark/50 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent"></div>
+            </div>
+            
+            <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-12">
+                <p class="text-brand-accent font-medium tracking-[0.2em] mb-6 fade-in text-sm md:text-base">SPECIALTY COFFEE ROASTER</p>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif text-white leading-tight mb-8 fade-in" style="transition-delay: 200ms;">
+                    その一口が、あなたの日常を<br class="hidden md:block">
+                    『特別なカフェ』に変える。
+                </h1>
+                <p class="text-white/90 text-sm md:text-lg mb-12 font-light leading-relaxed fade-in" style="transition-delay: 400ms;">
+                    忙しい今日を、豊かな一日に。<br>
+                    自分を整える、至福のコーヒータイム。
+                </p>
+                <div class="fade-in" style="transition-delay: 600ms;">
+                    <a href="#products" class="inline-flex items-center justify-center px-8 py-4 bg-brand-accent text-white hover:bg-brand-dark transition-all duration-300 rounded-sm tracking-wider text-sm">
+                        オンラインショップを見る
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ② 共感（悩み提起） -->
+        <section class="py-24 md:py-32 px-6 bg-brand-light">
+            <div class="max-w-3xl mx-auto text-center fade-in">
+                <i data-lucide="clock" class="w-8 h-8 mx-auto text-brand-accent mb-8 opacity-50"></i>
+                <h2 class="text-2xl md:text-3xl font-serif leading-relaxed text-brand-dark mb-8">
+                    分刻みのスケジュール、鳴り止まない通知。<br>
+                    最後に、ゆっくり深呼吸をしたのは<br class="hidden md:block">いつですか？
+                </h2>
+                <p class="text-gray-600 leading-loose">
+                    仕事に追われ、あっという間に過ぎていく毎日。<br>
+                    カフェに行く時間すら惜しい時でも、私たちの心は「スイッチをオフにする瞬間」を求めています。<br>
+                    単に喉を潤すためではない、精神的な豊かさを取り戻すための時間を。
+                </p>
+            </div>
+        </section>
+
+        <!-- ③ 解決策の提示 -->
+        <section id="about" class="py-24 md:py-32 px-6 bg-white">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 img-zoom-container rounded-sm fade-in">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=1000" alt="Home Cafe" class="w-full h-[500px] object-cover rounded-sm shadow-xl">
+                </div>
+                <div class="w-full md:w-1/2 fade-in">
+                    <span class="text-brand-accent text-sm tracking-widest font-medium block mb-4">CONCEPT</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-8 leading-tight">
+                        扉を開ければ、そこは<br>あなただけの特等席。
+                    </h2>
+                    <p class="text-gray-600 leading-loose mb-8">
+                        封を開けた瞬間に広がる、芳醇な香り。<br>
+                        お湯を注ぐとふっくらと膨らむ新鮮な豆。<br>
+                        Atelier Noirは、ご自宅のリビングやデスクを、最高のリラックス空間へと変える魔法のチケットです。<br>
+                        あなたのライフスタイルに寄り添う、至高の一杯をお届けします。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ④ 商品の強み（USP） -->
+        <section class="py-24 md:py-32 px-6 bg-brand-dark text-white">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <span class="text-brand-accent text-sm tracking-widest font-medium block mb-4">OUR COMMITMENT</span>
+                    <h2 class="text-3xl md:text-4xl font-serif">五感で味わう、2つのこだわり</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-16">
+                    <div class="fade-in">
+                        <div class="img-zoom-container rounded-sm mb-8">
+                            <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&q=80&w=1000" alt="Beautiful Package" class="w-full h-80 object-cover rounded-sm">
+                        </div>
+                        <h3 class="text-2xl font-serif mb-4 flex items-center gap-3">
+                            <i data-lucide="package" class="w-6 h-6 text-brand-accent"></i>
+                            心を彩る、飾っておきたくなるデザイン
+                        </h3>
+                        <p class="text-white/80 leading-loose text-sm md:text-base">
+                            インテリアに馴染む、シックで洗練されたパッケージ。戸棚にしまうのではなく、あえて目に見える場所に置いておきたくなるデザインを目指しました。視覚からも「オフのスイッチ」を入れる、美しい佇まいです。
+                        </p>
+                    </div>
+                    
+                    <div class="fade-in" style="transition-delay: 200ms;">
+                        <div class="img-zoom-container rounded-sm mb-8">
+                            <img src="https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?auto=format&fit=crop&q=80&w=1000" alt="Roasting Beans" class="w-full h-80 object-cover rounded-sm">
+                        </div>
+                        <h3 class="text-2xl font-serif mb-4 flex items-center gap-3">
+                            <i data-lucide="flame" class="w-6 h-6 text-brand-accent"></i>
+                            厳選された豆と、こだわり抜いた焙煎
+                        </h3>
+                        <p class="text-white/80 leading-loose text-sm md:text-base">
+                            世界中の農園から選び抜いた最高品質の豆を、熟練の焙煎士がその日の気温や湿度に合わせて丁寧にロースト。雑味のないクリアな味わいと、いつまでも余韻が続く深い香りを実現しました。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⑤ ユーザー体験（シーン） -->
+        <section class="py-24 md:py-32 px-6 bg-brand-light">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-4">日常を彩るシーン</h2>
+                    <p class="text-gray-600">あなたの暮らしの、どんな瞬間にも。</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Scene 1 -->
+                    <div class="fade-in bg-white p-4 rounded-sm shadow-sm group">
+                        <div class="overflow-hidden rounded-sm mb-6 h-64">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=800" alt="Morning Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <h3 class="text-xl font-serif text-brand-dark mb-3 text-center">01. Morning</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed text-center">
+                            静かな朝、豆を挽く音と香りで一日をスタート。頭をクリアにし、ポジティブなエネルギーを満たします。
+                        </p>
+                    </div>
+                    <!-- Scene 2 -->
+                    <div class="fade-in bg-white p-4 rounded-sm shadow-sm group" style="transition-delay: 200ms;">
+                        <div class="overflow-hidden rounded-sm mb-6 h-64">
+                            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800" alt="Work Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <h3 class="text-xl font-serif text-brand-dark mb-3 text-center">02. Work Break</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed text-center">
+                            集中力が途切れた午後のひととき。一口飲むだけで、張り詰めた緊張を解きほぐし、リセットしてくれます。
+                        </p>
+                    </div>
+                    <!-- Scene 3 -->
+                    <div class="fade-in bg-white p-4 rounded-sm shadow-sm group" style="transition-delay: 400ms;">
+                        <div class="overflow-hidden rounded-sm mb-6 h-64">
+                            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=800" alt="Reading Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <h3 class="text-xl font-serif text-brand-dark mb-3 text-center">03. Relaxing Night</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed text-center">
+                            お気に入りの本とともに。カフェインレスのデカフェで、深く穏やかな眠りにつく前の贅沢な時間を。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⑥ 信頼性・実績 -->
+        <section class="py-24 px-6 bg-white border-t border-brand-light">
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="fade-in">
+                        <h2 class="text-3xl font-serif text-brand-dark mb-8">お客様の声</h2>
+                        <div class="space-y-6">
+                            <div class="bg-brand-light p-6 rounded-sm relative">
+                                <i data-lucide="quote" class="absolute top-4 right-4 w-8 h-8 text-brand-accent/20"></i>
+                                <div class="flex items-center text-brand-accent mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed font-medium">「袋を開けた瞬間の香りが全く違います。忙しい朝でも、このコーヒーを淹れる5分間だけは自分を取り戻せる大切な時間になりました。」</p>
+                                <p class="text-gray-500 text-xs mt-4 text-right">30代 女性 / フリーランス</p>
+                            </div>
+                            <div class="bg-brand-light p-6 rounded-sm relative">
+                                <i data-lucide="quote" class="absolute top-4 right-4 w-8 h-8 text-brand-accent/20"></i>
+                                <div class="flex items-center text-brand-accent mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed font-medium">「パッケージがお洒落で、キッチンの棚に飾っています。友人へのギフトとしても大変喜ばれました。味も本格的で大満足です。」</p>
+                                <p class="text-gray-500 text-xs mt-4 text-right">40代 男性 / 会社員</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fade-in text-center md:text-left">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600" alt="Roaster" class="w-48 h-48 rounded-full object-cover mx-auto md:mx-0 mb-6 shadow-md">
+                        <h3 class="text-xl font-serif text-brand-dark mb-2">Head Roaster</h3>
+                        <p class="text-brand-accent font-medium mb-4">Hiroshi T.</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            「一杯のコーヒーが持つ力を信じています。単なる飲み物ではなく、日々の疲れを癒やし、明日への活力を生み出すきっかけになってほしい。そんな願いを込めて、毎日丁寧に焙煎しています。」
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⑦ 商品ラインナップ -->
+        <section id="products" class="py-24 md:py-32 px-6 bg-brand-light">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in">
+                    <span class="text-brand-accent text-sm tracking-widest font-medium block mb-4">ONLINE SHOP</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-dark">商品ラインナップ</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                    <!-- Product 1 -->
+                    <a href="#" class="group block fade-in bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="h-72 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&q=80&w=800" alt="Single Origin" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute top-4 left-4 bg-brand-dark text-white text-xs px-3 py-1 font-serif tracking-widest">RECOMMEND</div>
+                        </div>
+                        <div class="p-8 text-center border-t border-brand-light">
+                            <h3 class="text-2xl font-serif text-brand-dark mb-2">Atelier Blend</h3>
+                            <p class="text-brand-accent mb-4">アトリエ・ブレンド</p>
+                            <p class="text-gray-600 text-sm mb-6">
+                                ダークチョコレートのような深いコクと、<br>後味に残るほのかな甘み。当店のシグネチャー。
+                            </p>
+                            <p class="font-serif text-xl text-brand-dark mb-6">¥2,400 <span class="text-sm text-gray-500 font-sans">/ 200g</span></p>
+                            <span class="inline-block border border-brand-dark text-brand-dark px-8 py-2 text-sm hover:bg-brand-dark hover:text-white transition-colors">詳細を見る</span>
+                        </div>
+                    </a>
+
+                    <!-- Product 2 -->
+                    <a href="#" class="group block fade-in bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style="transition-delay: 200ms;">
+                        <div class="h-72 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1559525839-cca4ea2f641b?auto=format&fit=crop&q=80&w=800" alt="Gift Assort" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute top-4 left-4 bg-brand-accent text-white text-xs px-3 py-1 font-serif tracking-widest">GIFT</div>
+                        </div>
+                        <div class="p-8 text-center border-t border-brand-light">
+                            <h3 class="text-2xl font-serif text-brand-dark mb-2">Tasting Assort Box</h3>
+                            <p class="text-brand-accent mb-4">テイスティング・アソート</p>
+                            <p class="text-gray-600 text-sm mb-6">
+                                3種類の異なる個性を楽しめる贅沢なセット。<br>大切な方への贈り物や、自分へのご褒美に。
+                            </p>
+                            <p class="font-serif text-xl text-brand-dark mb-6">¥4,800 <span class="text-sm text-gray-500 font-sans">/ 100g × 3種</span></p>
+                            <span class="inline-block border border-brand-dark text-brand-dark px-8 py-2 text-sm hover:bg-brand-dark hover:text-white transition-colors">詳細を見る</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⑦.5 AIパーソナルバリスタ機能 -->
+        <section class="py-24 px-6 bg-brand-dark text-white border-t border-white/10">
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <span class="text-brand-accent text-sm tracking-widest font-medium block mb-4">✨ AI PERSONAL BARISTA</span>
+                <h2 class="text-3xl md:text-4xl font-serif mb-6">今のあなたに寄り添う一杯を。</h2>
+                <p class="text-white/80 mb-8 leading-loose">
+                    いまの気分や、お好みの味わい、今日あった出来事などを自由に教えてください。<br>
+                    AIバリスタが、あなたを癒やす最適なコーヒーをご提案します。
+                </p>
+
+                <div class="bg-white/5 p-6 md:p-8 rounded-lg backdrop-blur-sm border border-white/10 text-left">
+                    <textarea id="ai-user-input" rows="3" class="w-full bg-white text-brand-dark p-4 rounded-sm focus:outline-none focus:ring-2 focus:ring-brand-accent mb-4 resize-none" placeholder="例：今日は一日中会議で疲れました。夜にリラックスできる、甘い香りのコーヒーが飲みたいです。"></textarea>
+                    
+                    <div class="text-center">
+                        <button id="ai-submit-btn" onclick="askAIBarista()" class="inline-flex items-center justify-center px-8 py-3 bg-brand-accent text-white hover:bg-white hover:text-brand-dark transition-all duration-300 rounded-sm tracking-wider font-medium group shadow-lg">
+                            ✨ 提案してもらう ✨
+                        </button>
+                    </div>
+
+                    <div id="ai-result-area" class="mt-8 hidden">
+                        <div id="ai-loading" class="hidden text-center text-brand-accent py-4">
+                            <i data-lucide="loader-2" class="w-8 h-8 animate-spin mx-auto mb-3"></i>
+                            <p class="text-sm tracking-wider">豆を挽き、香りを確かめています...</p>
+                        </div>
+                        <div id="ai-response" class="bg-brand-light text-brand-dark p-6 md:p-8 rounded-sm shadow-inner hidden border-l-4 border-brand-accent">
+                            <!-- AI Response will be injected here -->
+                        </div>
+                        <div id="ai-error" class="text-red-400 text-sm text-center hidden py-4">
+                            通信エラーが発生しました。申し訳ありませんが、時間をおいて再度お試しください。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⑧ クロージング(CTA) -->
+        <section class="relative py-32 flex items-center justify-center">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=2000" alt="Coffee beans background" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm"></div>
+            </div>
+            
+            <div class="relative z-10 text-center px-6 max-w-3xl mx-auto fade-in">
+                <h2 class="text-3xl md:text-5xl font-serif text-white mb-6 leading-tight">
+                    今日から、新しい<br class="md:hidden">リラックス習慣を。
+                </h2>
+                <p class="text-white/80 mb-12">
+                    一杯のコーヒーが、あなたの日常を少しだけ特別にしてくれます。<br>
+                    五感で味わう至福の時間を、ご自宅で。
+                </p>
+                
+                <a href="#products" class="inline-flex items-center justify-center px-10 py-5 bg-brand-accent text-white hover:bg-white hover:text-brand-dark transition-all duration-300 rounded-sm tracking-wider text-lg font-serif mb-8 shadow-lg w-full md:w-auto group">
+                    自分へのご褒美を注文する
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-white/90 text-sm border-t border-white/20 pt-8">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="truck" class="w-5 h-5 text-brand-accent"></i>
+                        <span>平日12時までのご注文で最短当日発送</span>
+                    </div>
+                    <div class="hidden md:block w-px h-4 bg-white/20"></div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="gift" class="w-5 h-5 text-brand-accent"></i>
+                        <span>上質なギフトラッピング無料対応</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-brand-dark text-white/60 py-12 px-6 border-t border-white/10">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 mb-12 text-sm">
+            <div>
+                <h4 class="font-serif text-white text-xl tracking-widest mb-4">Atelier Noir</h4>
+                <p class="mb-2">オンライン専用スペシャルティコーヒーロースター</p>
+                <p>Mail: info@atelier-noir.example.com</p>
+            </div>
+            <div>
+                <h4 class="text-white mb-4 tracking-wider">GUIDE</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-brand-accent transition-colors">ご利用ガイド</a></li>
+                    <li><a href="#" class="hover:text-brand-accent transition-colors">よくあるご質問</a></li>
+                    <li><a href="#" class="hover:text-brand-accent transition-colors">お問い合わせ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white mb-4 tracking-wider">LEGAL</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-brand-accent transition-colors">特定商取引法に基づく表記</a></li>
+                    <li><a href="#" class="hover:text-brand-accent transition-colors">プライバシーポリシー</a></li>
+                    <li><a href="#" class="hover:text-brand-accent transition-colors">利用規約</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-xs border-t border-white/10 pt-8">
+            <p>&copy; 2024 Atelier Noir All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- スクリプト -->
+    <script>
+        const apiKey = ""; // Gemini APIキーを設定します
+
+        // 指示要件に従い、API呼び出し用のエクスポネンシャルバックオフ付き再試行ロジックを実装
+        async function fetchWithRetry(url, options, maxRetries = 5) {
+            const delays = [1000, 2000, 4000, 8000, 16000];
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) return response;
+                    if (i === maxRetries - 1) throw new Error(`API returned ${response.status}`);
+                } catch (err) {
+                    if (i === maxRetries - 1) throw err;
+                }
+                await new Promise(resolve => setTimeout(resolve, delays[i]));
+            }
+        }
+
+        async function askAIBarista() {
+            const inputEl = document.getElementById('ai-user-input');
+            const submitBtn = document.getElementById('ai-submit-btn');
+            const resultArea = document.getElementById('ai-result-area');
+            const loadingEl = document.getElementById('ai-loading');
+            const responseEl = document.getElementById('ai-response');
+            const errorEl = document.getElementById('ai-error');
+
+            const userText = inputEl.value.trim();
+            if (!userText) return;
+
+            // UI状態の更新（ローディング表示）
+            resultArea.classList.remove('hidden');
+            loadingEl.classList.remove('hidden');
+            responseEl.classList.add('hidden');
+            errorEl.classList.add('hidden');
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            const systemPrompt = "あなたは高級コーヒーブランド「Atelier Noir」の専属パーソナルバリスタです。ユーザーの今の気分や状況に合わせて、最適なコーヒーのフレーバー（例：フルーティー、深煎りのコク、デカフェの甘み等）を提案し、優しい労いの言葉をかけてください。回答は2〜3段落で、丁寧で温かみのあるトーンにしてください。返答はプレーンテキストで行い、マークダウンなどは使用しないでください。";
+
+            try {
+                const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: userText }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
+
+                const data = await response.json();
+                let aiText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                
+                if (aiText) {
+                    // 表示用にテキストを整える
+                    responseEl.innerHTML = `<p class="leading-relaxed text-sm md:text-base font-medium whitespace-pre-wrap">${aiText}</p>`;
+                    responseEl.classList.remove('hidden');
+                } else {
+                    throw new Error('No content returned');
+                }
+            } catch (error) {
+                errorEl.classList.remove('hidden');
+            } finally {
+                loadingEl.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        // Lucide Iconsの初期化
+        lucide.createIcons();
+
+        // スクロール時のフェードインアニメーション
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target); // 一度発火したら監視を解除
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // ヘッダーのスクロールエフェクト
+            const header = document.getElementById('header');
+            const headerBg = document.getElementById('header-bg');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    headerBg.classList.replace('bg-brand-light/90', 'bg-brand-light/95');
+                    headerBg.classList.add('shadow-sm');
+                } else {
+                    headerBg.classList.replace('bg-brand-light/95', 'bg-brand-light/90');
+                    headerBg.classList.remove('shadow-sm');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

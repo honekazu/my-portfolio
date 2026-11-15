@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVERRIDE FITNESS | 限界を上書きするパーソナルジム</title>
+    <style>
+        /* ベーススタイル */
+        html {
+            scroll-behavior: smooth; /* スムーズスクロール */
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: #111;
+            color: #fff;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+        h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #d32f2f, #f44336);
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            text-align: center;
+            padding: 150px 20px;
+            background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=80') center/cover;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 100px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 60px;
+            position: relative;
+            letter-spacing: 0.1em;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #d32f2f;
+            margin: 20px auto 0;
+        }
+
+        /* コンセプト（画像とテキストの2カラム） */
+        .concept {
+            background-color: #1a1a1a;
+        }
+        .concept-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .concept-text {
+            flex: 1;
+        }
+        .concept-image {
+            flex: 1;
+        }
+        .concept-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .concept-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #f44336;
+        }
+        .concept-text p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        /* 特徴（Features） */
+        .features {
+            background-color: #111;
+        }
+        .features-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .feature-card {
+            background-color: #222;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 300px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border-bottom: 4px solid #d32f2f;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .feature-card .content {
+            padding: 30px;
+        }
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .feature-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        /* プラン */
+        .plan {
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            text-align: center;
+        }
+        .plan-box {
+            background-color: #111;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        }
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #f44336;
+            margin: 20px 0;
+        }
+        .plan-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+        .plan-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #222;
+            font-size: 1.1rem;
+        }
+        .plan-list li:before {
+            content: '✔';
+            color: #f44336;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Q&Aセクション */
+        .faq {
+            background-color: #1a1a1a;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        details {
+            background-color: #222;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+        summary {
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary::after {
+            content: '+';
+            color: #f44336;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+        .faq-content {
+            padding: 0 20px 20px;
+            color: #ccc;
+            border-top: 1px solid #333;
+            margin-top: 10px;
+            padding-top: 20px;
+        }
+
+        /* フォームセクション */
+        .contact {
+            background-color: #111;
+            text-align: center;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #222;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #444;
+            background-color: #111;
+            color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #d32f2f;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #000;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #222;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .concept-wrapper { flex-direction: column-reverse; }
+            .features-grid { flex-direction: column; }
+            .price { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヒーローセクション -->
+    <header class="hero">
+        <div class="container">
+            <h1>どんな限界も、<br>私たちが上書きする。</h1>
+            <p>パーソナルトレーニングジム『OVERRIDE FITNESS』</p>
+            <a href="#contact" class="btn">無料カウンセリングを予約する</a>
+        </div>
+    </header>
+
+    <!-- コンセプトセクション -->
+    <section class="concept">
+        <div class="container concept-wrapper">
+            <div class="concept-text">
+                <h2 class="section-title" style="text-align: left; margin-bottom:30px;">CONCEPT</h2>
+                <h3>「あなたの要求（リクエスト）を、<br>100%実現するために」</h3>
+                <p>あなたは今まで、何度ボディメイクを諦めましたか？<br>OVERRIDE FITNESSは、お客様の「変わりたい」という強い要求に、決して「NO」とは言いません。</p>
+                <p>甘えや妥協は一切排除。<br>時に限界ギリギリまであなたを追い込み、今まで破れなかった壁を粉砕します。<br>どんなに困難に思える目標でも、私たちがあなたの理想を「上書き」し、必ず達成へと導きます。</p>
+            </div>
+            <div class="concept-image">
+                <!-- フリー素材: トレーニング中の男性 -->
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80" alt="限界に挑戦するトレーニング">
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">FEATURES</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <!-- フリー素材: 決意を感じる背中 -->
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="content">
+                        <h3>01. 「絶対達成」への執念</h3>
+                        <p>お客様の目標達成のためなら、私たちは一切の妥協を許しません。常にあなたの限界を引き上げ、理想の姿という結果を手に入れるまで徹底的にサポートします。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <!-- フリー素材: 安全なフォーム指導 -->
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="content">
+                        <h3>02. 安全かつ極限のメソッド</h3>
+                        <p>限界を超えるためには正しい知識が必要です。解剖学や最新のスポーツ栄養学を熟知したプロが、「極限まで追い込むが、絶対に怪我はさせない」ラインを見極めます。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <!-- フリー素材: 器具のカスタマイズ -->
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1534438097544-e51366874ebf?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="content">
+                        <h3>03. 究極のカスタマイズ</h3>
+                        <p>ダイエット、筋力アップ、大会出場など、通常のご要望からハードコアなご要望まで、すべてお客様の目的に合わせてプログラムを完全最適化します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プランセクション -->
+    <section class="plan">
+        <div class="container">
+            <h2 class="section-title">PROGRAMS & PRICING</h2>
+            <div class="plan-box">
+                <h3 style="font-size: 1.5rem;">リミットブレイク・コース<br>（2ヶ月 / 全16回）</h3>
+                <div class="price">¥298,000 <span style="font-size:1.2rem; color:#aaa;">(税込)</span></div>
+                <ul class="plan-list">
+                    <li>完全マンツーマン・パーソナルトレーニング（1回60分）</li>
+                    <li>24時間体制の徹底した食事管理サポート（LINE対応）</li>
+                    <li>最高品質プロテイン / サプリメント毎回無料提供</li>
+                    <li>トレーニングウェア・シューズ・タオル無料レンタル</li>
+                    <li>トレーニング後のプロテインスムージー提供</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&Aセクション -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Q & A</h2>
+            <div class="faq-container">
+                <details>
+                    <summary>Q. 本当にどんな目標でも叶えてくれますか？</summary>
+                    <div class="faq-content">
+                        A. はい。ただし、お客様自身の「絶対に諦めない」という覚悟が必要です。お客様の熱量に合わせて、私たちが専門的な知識と経験で全力で引き上げ、目標達成まで導きます。
+                    </div>
+                </details>
+                <details>
+                    <summary>Q. 運動未経験で、ハードなトレーニングについていけるか不安です。</summary>
+                    <div class="faq-content">
+                        A. ご安心ください。お客様の現在の体力レベル、骨格、柔軟性を正確に把握し、その人にとっての「限界点」を狙って安全に指導します。最初から無理な重量を持たせるようなことは絶対にありません。
+                    </div>
+                </details>
+                <details>
+                    <summary>Q. 食事制限はかなり厳しいのでしょうか？</summary>
+                    <div class="faq-content">
+                        A. 目標（大会出場レベルか、ダイエット目的か）によって異なりますが、極端な絶食など健康を害する指導は行いません。「しっかり食べて筋肉を付け、脂肪を落とす」ための科学的なマクロ栄養素管理を徹底指導します。
+                    </div>
+                </details>
+                <details>
+                    <summary>Q. リバウンドしないか心配です。</summary>
+                    <div class="faq-content">
+                        A. 当ジムの目的は「一時的な減量」ではなく、「身体の根本的な書き換え（上書き）」です。2ヶ月のコースを通じて、お客様自身に正しいトレーニングと食事の知識が身につくため、卒業後もご自身で体型を維持できるようになります。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約・お問い合わせフォーム -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">RESERVE</h2>
+            <p style="margin-bottom: 40px; color:#ccc;">まずは無料カウンセリングで、あなたの「要求」をお聞かせください。<br>毎月先着10名様限定で、入会金（30,000円）無料キャンペーン実施中！</p>
+            <div class="form-container">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" name="name" required placeholder="例：山田 太郎">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" name="email" required placeholder="例：info@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="goal">達成したい目標・ご要望（任意）</label>
+                        <textarea id="goal" name="goal" rows="4" placeholder="例：2ヶ月で体脂肪を5%落としたい、など"></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">無料カウンセリングに申し込む</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2026 OVERRIDE FITNESS All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
