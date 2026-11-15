@@ -27,9 +27,12 @@ Web制作・ホームページ制作
 
 ## 制作例
 
-架空のカフェを題材にしたサンプルサイトです。メニュー（タブ切り替え・税込価格）、曜日別の営業時間、アクセス・駐車場案内、電話・Instagram・お問い合わせへの導線まで、実際のお店で必要な要素を1ページにまとめています。
+すべて架空のお店を題材にしたサンプルです。
 
-- カフェ ほのか（横浜・青葉台／架空のサンプル）: https://muse.ai/s/xiao-sanadian-pu-xiang-xkxo69qsxdxf6xhq/NRJtsMT6F6s8VnXeDnrnmtyQe2ABNeOtq76L6OOMupg
+- カフェ ほのか（横浜・青葉台／カフェの1ページサイト）: https://muse.ai/s/xiao-sanadian-pu-xiang-xkxo69qsxdxf6xhq/NRJtsMT6F6s8VnXeDnrnmtyQe2ABNeOtq76L6OOMupg
+- Atelier Noir（スペシャルティコーヒーのLP）: https://honekazu.github.io/my-portfolio/samples/atelier-noir.html
+- OVERRIDE FITNESS（パーソナルジムのLP）: https://honekazu.github.io/my-portfolio/samples/override-fitness.html
+- LUMINA HAIR（美容室のLP）: https://honekazu.github.io/my-portfolio/samples/lumina-hair.html
 
 ## スキル・対応可能業務
 
