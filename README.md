@@ -33,6 +33,7 @@ Web制作・ホームページ制作
 - Atelier Noir（スペシャルティコーヒーのLP）: https://honekazu.github.io/my-portfolio/samples/atelier-noir.html
 - OVERRIDE FITNESS（パーソナルジムのLP）: https://honekazu.github.io/my-portfolio/samples/override-fitness.html
 - LUMINA HAIR（美容室のLP）: https://honekazu.github.io/my-portfolio/samples/lumina-hair.html
+- AZURE ESCAPE（リゾートホテルのLP）: https://honekazu.github.io/my-portfolio/samples/azure-escape.html
 
 ## スキル・対応可能業務
 
